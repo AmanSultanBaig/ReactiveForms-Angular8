@@ -1,0 +1,50 @@
+<form [formGroup]="profileForm">
+    <h1>Reactive Forms with Angular 8</h1>
+    <label>
+        First Name:
+        <input type="text" formControlName="firstName">
+    </label>
+
+    <label>
+        Last Name:
+        <input type="text" formControlName="lastName">
+    </label>
+    <div formGroupName="address">
+        <h3>Address</h3>
+
+        <label>
+            Street:
+            <input type="text" formControlName="street">
+        </label>
+
+        <label>
+            City:
+            <input type="text" formControlName="city">
+        </label>
+
+        <label>
+            State:
+            <input type="text" formControlName="state">
+        </label>
+
+        <label>
+            Zip Code:
+            <input type="text" formControlName="zip">
+        </label>
+    </div>
+    <p>
+        <button (click)="updateProfile()">Update Profile</button>
+    </p>
+    <div formArrayName="DynamicControl">
+        <h3>Add Fields:</h3> <button (click)="addControl()">Add Alias</button>
+
+        <div style="width: 20%" *ngFor="let fields of DynamicControl.controls; let i=index">
+            <br />
+            <label>
+                Feild {{i+1}}:
+                <input type="text" [formControlName]="i">
+                <hr>
+            </label>
+        </div>
+    </div>
+</form>
